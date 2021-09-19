@@ -22,3 +22,5 @@ telegraf --config temperatureLog.conf
     - Run with `~/dht/run.sh` or `~/dht/run_telegraf.sh`
 3) Write python to connect to postgres DB
     - Push influsxDB to postgres
+
+
