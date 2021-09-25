@@ -1,8 +1,6 @@
 from influxdb import InfluxDBClient
 
-client = InfluxDBClient(host = 'localhost', port = 8086, database = 'temperature')
+client = InfluxDBClient(host = '167.71.158.245', port = 8086, username = 'shiny', password = 'metrics', database = "temperature")
 
-res = client.query(query = "select * from room_temperature_humidity;", database = "temperature")
-
-print(res)
+print(client.query("SHOW MEASUREMENTS"))
 
