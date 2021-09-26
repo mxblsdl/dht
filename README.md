@@ -5,6 +5,10 @@ Interface with the Adafruit DHT sensor and log values to a database. Runs on my 
 1) Run temp.py to start logging temp values
 2) Start telegraf to push the temp log to the Influx DB
 
+These are accomplished through the conf file that connects to the influx DB and the python file that reads data from the temp sensor.
+
+The data will be read and visualized through a TBD project
+
 ## Steps
 
 These are run from the pi by editing the rc.local file and adding the lines:
