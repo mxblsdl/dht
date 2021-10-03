@@ -11,7 +11,7 @@ The data will be read and visualized through a TBD project
 
 ## Steps
 
-These are run from the pi by editing the rc.local file and adding the lines:
+These are run from the pi by editing the rc.local file and adding the lines:  
 
 ```
 sudo nano /etc/rc.local
