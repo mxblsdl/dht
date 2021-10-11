@@ -15,3 +15,10 @@ sudo nano /etc/rc.local
 python3 temp.py &
 telegraf --config temperatureLog.conf &
 ```
+
+## TODOS
+- Change the user that runs startup commands
+  - This will cause the log file to be created by user `pi`
+- Create a cron job that runs truncate.sh periodically
+  - Can only truncate file that user created
+  - Would rather run truncate as non-root
