@@ -24,6 +24,8 @@ Then I set up a cronjob to truncate the file daily by running the `truncate.sh` 
 
 ## LED Display
 
-An LED display screen was added so I could see the current temperature making this a much more interactive device. The `temp.py` script was altered to also update the LED screen with the most recent temp reading. This updates every 30 seconds.
+![](sensor.png)
+
+I added an LED display screen to see the current temperature to create a more interactice display. The `temp.py` script was altered to also update the LED screen with the most recent temp reading. This updates every 30 seconds.
 
 I used [these](https://www.amazon.com/dp/B086VVT4NH?psc=1&ref=ppx_yo2_dt_b_product_details) displays and they have worked great. I use the i2c_driver to interface with the screen as tutorialed [here](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c). The copy of `i2c_driver.py` in this repo does have some changes to better allow for toggling the backlight screen.
