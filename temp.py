@@ -15,15 +15,20 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
-# Init the lcd object
-mylcd = i2c_driver.LCD()
-
 # Set time zone
 os.environ["TZ"] = "America/Los_Angeles"
 time.tzset()
 
 
 while True:
+    # Init the lcd object with  conditional backlight flag
+    if int(time.strftime("%H")) < 9 | int(time.strftime("%H")) > 15:
+        bl = 0
+    else:
+        bl = 1
+
+    mylcd = i2c_driver.LCD(bl=bl)
+
     h, t = adht.read_retry(adht.DHT22, 4)
     logging.info(f"Temp={round(t, 1)} C and Humidity={round(h, 1)}")
 
@@ -40,7 +45,10 @@ while True:
     mylcd.lcd_display_string(my_temp + " Degrees", 3)
 
     # Turn the backlight on
-    mylcd.backlight(1)
+    # if int(time.strftime("%H")) < 9 | int(time.strftime("%H")) > 15:
+    #     mylcd.backlight(0)
+    # else:
+    #     mylcd.backlight(1)
 
     # Sleep the system
     time.sleep(30)

@@ -84,7 +84,12 @@ class I2CDevice:
 
 
 class LCD:
-    def __init__(self):
+    def __init__(self, bl):
+        if bl == 1:
+            self.BL = LCD_BACKLIGHT
+        else:
+            self.BL = LCD_NOBACKLIGHT
+
         """Initializes objects and the LCD"""
         self.lcd_device = I2CDevice(ADDRESS)
 
@@ -103,13 +108,13 @@ class LCD:
     # This disables the backlight from ever turning on
     def lcd_strobe(self, data):
         """Clocks EN to latch command"""
-        self.lcd_device.write_cmd(data | En | LCD_BACKLIGHT)
+        self.lcd_device.write_cmd(data | En | self.BL)
         time.sleep(0.0005)
-        self.lcd_device.write_cmd(((data & ~En) | LCD_BACKLIGHT))
+        self.lcd_device.write_cmd(((data & ~En) | self.BL))
         time.sleep(0.0001)
 
     def lcd_write_four_bits(self, data):
-        self.lcd_device.write_cmd(data | LCD_BACKLIGHT)
+        self.lcd_device.write_cmd(data | self.BL)
         self.lcd_strobe(data)
 
     def lcd_write(self, cmd, mode=0):
