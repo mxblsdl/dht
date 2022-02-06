@@ -22,10 +22,10 @@ time.tzset()
 
 while True:
     # Init the lcd object with  conditional backlight flag
-    if int(time.strftime("%H")) < 9 | int(time.strftime("%H")) > 15:
-        bl = 0
-    else:
+    if int(time.strftime("%H")) > 9 and int(time.strftime("%H")) < 16:
         bl = 1
+    else:
+        bl = 0
 
     mylcd = i2c_driver.LCD(bl=bl)
 
