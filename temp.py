@@ -2,9 +2,10 @@ import Adafruit_DHT as adht
 import logging
 import time
 import i2c_driver
-from datetime import datetime
 
-# import os
+# from datetime import datetime
+import os
+
 """
 Logs temperature and humidity to a log file every 30 seconds. 
 """
@@ -16,14 +17,14 @@ logging.basicConfig(
 )
 
 # Set time zone
-# os.environ["TZ"] = "America/Los_Angeles"
-# time.tzset()
+os.environ["TZ"] = "America/Los_Angeles"
+time.tzset()
 
 while True:
-    current_hour = int(format(datetime.now(), "%H"))
+    current_hour = int(time.strftime("%H"))
 
     # Init the lcd object with  conditional backlight flag
-    if current_hour > 9 and current_hour < 16:
+    if current_hour >= 8 and current_hour < 16:
         bl = 1
     else:
         bl = 0
